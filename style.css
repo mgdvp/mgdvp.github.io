@@ -1,0 +1,110 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+body{
+	background: #000;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+/*	background-image: url('parco-chan-BeNerxxCKLU-unsplash.jpg');*/
+/*	background-size: cover;*/
+/*	background-position: center;*/
+}
+
+#bgimg{
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+#bgopacity{
+	position: fixed;
+	opacity: 0.8;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	object-fit: cover;
+	object-position: center;
+}
+
+#main{
+	text-align: center;
+}
+
+input{
+	font-size: 100px;
+	width: 120px;
+	white-space: nowrap;
+	text-align: center;
+	background: transparent;
+	color: inherit;
+	outline: none;
+	border: none;
+}
+
+#dbldot{
+	font-size: 64px;
+	letter-spacing: 0;
+	vertical-align: text-bottom;
+}
+
+button{
+	font-size: 22px;
+	border-radius: 20px;
+	outline: 1px solid #bbb;
+	border: none;
+	background: transparent;
+	color: #eee;
+	cursor: pointer;
+	padding: 12px 18px;
+	-webkit-tap-highlight-color: transparent;
+}
+
+button:hover{
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+button:active{
+	background: rgba(0, 0, 0, 0.5);
+}
+
+iframe{
+	position: absolute;
+	bottom: 2.5rem;
+	left: 2.5rem;
+}
+
+@media only screen and (max-width: 520px){
+	iframe{
+		bottom: 2rem;
+		left: 50%;
+		width: 92% !important;
+		translate: -50%;
+	}
+	button:hover{
+		background: transparent;
+	}
+}
