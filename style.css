@@ -97,7 +97,7 @@ iframe{
 	left: 2.5rem;
 }
 
-@media only screen and (max-width: 520px){
+@media only screen and (max-width: 695px){
 	iframe{
 		bottom: 2rem;
 		left: 50%;
