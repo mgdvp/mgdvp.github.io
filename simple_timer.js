@@ -55,4 +55,6 @@ function resetTimer() {
   started = false;
   minutesInput.value = '40';
   secondsInput.value = '00';
+  minutesInput.readOnly = false;
+  secondsInput.readOnly = false;
 }
