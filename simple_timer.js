@@ -1,4 +1,5 @@
 let timer;
+let started = false;
 let minutesInput = document.getElementById('minutes');
 let secondsInput = document.getElementById('seconds');
 
@@ -18,21 +19,24 @@ minutesInput.oninput = (e) => {
 }
 
 function startTimer() {
-  let totalSeconds = parseInt(minutesInput.value || 0) * 60 + parseInt(secondsInput.value || 0);
-  minutesInput.readOnly = true;
-  secondsInput.readOnly = true;
-  updateInputs(totalSeconds);
-
-  timer = setInterval(function() {
-    if (totalSeconds <= 0) {
-      clearInterval(timer);
-      minutesInput.value = '00';
-      secondsInput.value = '00';
-    } else {
-      totalSeconds--;
-      updateInputs(totalSeconds);
-    }
-  }, 1000);
+  if(!started){
+    let totalSeconds = parseInt(minutesInput.value || 0) * 60 + parseInt(secondsInput.value || 0);
+    minutesInput.readOnly = true;
+    secondsInput.readOnly = true;
+    started = true;
+    updateInputs(totalSeconds);
+  
+    timer = setInterval(function() {
+      if (totalSeconds <= 0) {
+        clearInterval(timer);
+        minutesInput.value = '00';
+        secondsInput.value = '00';
+      } else {
+        totalSeconds--;
+        updateInputs(totalSeconds);
+      }
+    }, 1000);
+  }
 }
 
 function updateInputs(totalSeconds) {
@@ -48,6 +52,7 @@ function updateInputs(totalSeconds) {
 
 function resetTimer() {
   clearInterval(timer);
+  started = false;
   minutesInput.value = '40';
   secondsInput.value = '00';
 }
