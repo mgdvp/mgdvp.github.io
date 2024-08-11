@@ -1,4 +1,4 @@
 # Aesthetic pomodoro timer
-### with Lofi Spotify Playlist
+### With Lofi Spotify playlist
 
-#### [Try it.](https://mgbdevp.github.io)
+### [Try it.](https://mgbdevp.github.io)
