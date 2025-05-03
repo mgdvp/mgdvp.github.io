@@ -20,11 +20,6 @@ button::nth-child(2){
 	margin-left: 1rem;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
 body{
 	background: #000;
 	color: #fff;
