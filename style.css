@@ -12,6 +12,14 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input,button{
+	font-family: inherit;
+}
+
+button::nth-child(2){
+	margin-left: 1rem;
+}
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
@@ -25,9 +33,8 @@ body{
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-/*	background-image: url('parco-chan-BeNerxxCKLU-unsplash.jpg');*/
-/*	background-size: cover;*/
-/*	background-position: center;*/
+	font-family: 'Funnel Display', sans-serif;
+	font-weight: 500;
 }
 
 #bgimg{
@@ -63,6 +70,11 @@ input{
 	color: inherit;
 	outline: none;
 	border: none;
+	font-weight: 500;
+}
+
+#main > div{
+	margin-top: 1rem;
 }
 
 #dbldot{
@@ -72,19 +84,23 @@ input{
 }
 
 button{
-	font-size: 22px;
-	border-radius: 20px;
-	outline: 1px solid #bbb;
+	font-size: 17px;
+	border-radius: 2rem;
+	outline: 1px solid transparent;
 	border: none;
-	background: transparent;
-	color: #eee;
+	color: #000;
 	cursor: pointer;
-	padding: 12px 18px;
+	padding: 10px 0;
 	-webkit-tap-highlight-color: transparent;
+	transition: all 0.2s ease-in-out;
+	background-color: #fff;
+	width: 100px;
 }
 
 button:hover{
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.4) !important;
+	color: #fff;
+	outline-color: #fff;
 }
 
 button:active{
@@ -97,6 +113,72 @@ iframe{
 	left: 2.5rem;
 }
 
+#modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 1;
+}
+
+#modal-content{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.8);
+	padding: 2rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+}
+
+#modal-content #buttongroup{
+	align-self: flex-end;
+}
+
+#bgs{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+}
+
+#bgs img{
+	object-fit: cover;
+	object-position: center;
+	display: block;
+	width: 100px;
+	height: 100%;
+	cursor: pointer;
+	border-radius: 1rem;
+	padding: 0.25rem;
+	aspect-ratio: 4/3;
+}
+
+.selected{
+	outline: 2px solid #fff;
+}
+
+#select-bg{
+	position: fixed;
+	bottom: 2.5rem;
+	right: 2rem;
+	background-color: transparent;
+	outline: 1px solid #fff;
+}
+
+#hint{
+	padding: 1rem;
+	background: rgba(0, 0, 0, 0.8);
+	border-radius: 1rem;
+	color: #fff;
+}
+
 @media only screen and (max-width: 695px){
 	iframe{
 		bottom: 2rem;
@@ -105,6 +187,9 @@ iframe{
 		translate: -50%;
 	}
 	button:hover{
-		background: transparent;
+		background: transparent !important;
+	}
+	#select-bg{
+		bottom: 8rem;
 	}
 }
