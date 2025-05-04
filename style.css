@@ -141,6 +141,7 @@ iframe{
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
+	flex-wrap: wrap;
 }
 
 #bgs img{
@@ -186,5 +187,8 @@ iframe{
 	}
 	#select-bg{
 		bottom: 8rem;
+	}
+	#modal-content{
+		width: 100%;
 	}
 }
