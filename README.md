@@ -5,7 +5,7 @@
 
 - Editable timer
 - Background selector
-- Lofi Spotify playlist
+- Lofi Spotify playlist + playlist selector
 
 Screenshot: 
 
