@@ -113,6 +113,12 @@ document.getElementById('select-bg').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'block';
 });
 
+document.getElementById('playlist').addEventListener('change', () => {
+  const playlistId = document.getElementById('playlist').value;
+  const iframe = document.querySelector('iframe');
+  iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
+});
+
 function focusMode() {
   
 }
