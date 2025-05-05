@@ -12,8 +12,28 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input,button{
+.hidden{
+	display: none;
+}
+
+input,button,select{
 	font-family: inherit;
+}
+
+select{
+	font-size: 17px;
+	color: #fff;
+	background: transparent;
+	outline: none;
+	padding: 0.5rem 0.75rem;
+	border-radius: 0.5rem;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+select option{
+	color: #fff;
+	background: #000;
 }
 
 button::nth-child(2){
