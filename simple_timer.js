@@ -4,6 +4,7 @@ let paused = false;
 let minutesInput = document.getElementById('minutes');
 let secondsInput = document.getElementById('seconds');
 let totalSeconds;
+let focusModeEnabled = false;
 
 function closeHint() {
   document.getElementById('hint').remove();
@@ -118,7 +119,3 @@ document.getElementById('playlist').addEventListener('change', () => {
   const iframe = document.querySelector('iframe');
   iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
 });
-
-function focusMode() {
-  
-}
