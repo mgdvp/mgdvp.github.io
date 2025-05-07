@@ -253,14 +253,33 @@ iframe{
 @media only screen and (max-width: 695px){
 	iframe{
 		bottom: 2rem;
-		left: 50%;
+		left: initial;
 		width: 92% !important;
-		translate: -50%;
+	}
+	input{
+		font-size: 4rem;
+		width: 5.5rem;
+	}
+	#dbldot{
+		font-size: 2.5rem;
+	}
+	input[type="radio"] + label{
+		font-size: 14px;
+		width: 6.5rem;
+		margin-right: 0.25rem;
 	}
 	button:hover{
 		background: transparent !important;
 	}
 	#modal-content{
 		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 695px) and (orientation: landscape){
+	iframe{
+		bottom: 1rem;
+		right: 1rem;
+		width: 48% !important;
 	}
 }
