@@ -275,11 +275,3 @@ iframe{
 		width: 90%;
 	}
 }
-
-@media only screen and (max-width: 695px) and (orientation: landscape){
-	iframe{
-		bottom: 1rem;
-		right: 1rem;
-		width: 48% !important;
-	}
-}
