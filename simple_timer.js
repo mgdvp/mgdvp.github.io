@@ -5,10 +5,11 @@ let minutesInput = document.getElementById('minutes');
 let secondsInput = document.getElementById('seconds');
 let totalSeconds;
 let focusModeEnabled = false;
+let lastMouseMoveTime = Date.now();
 
-function closeHint() {
-  document.getElementById('hint').remove();
-}
+// function closeHint() {
+//   document.getElementById('hint').remove();
+// }
 
 secondsInput.oninput = (e) => {
   if(e.target.value > 59){
@@ -45,6 +46,7 @@ function startOrPause(e) {
     e.target.textContent = 'Pause';
 
     startTimer();
+    startInactivityCheck();
 
   } else if(started && !paused){
     paused = true;
@@ -58,9 +60,13 @@ function startOrPause(e) {
 }
 
 function startTimer() {
+  setTimeout(() => {
+    toggleFocusMode();
+  }, 3000);
   timer = setInterval(function() {
     if (totalSeconds <= 0) {
       clearInterval(timer);
+      clearInterval(inactivityCheck);
       minutesInput.value = '00';
       secondsInput.value = '00';
     } else {
@@ -69,6 +75,22 @@ function startTimer() {
     }
   }, 1000);
 }
+
+let inactivityCheck;
+
+function startInactivityCheck() {
+  clearInterval(inactivityCheck);
+
+  inactivityCheck = setInterval(() => {
+    const now = Date.now();
+    const timeSinceLastMove = now - lastMouseMoveTime;
+
+    if (started && !paused && timeSinceLastMove > 3000 && !focusModeEnabled) {
+      toggleFocusMode();
+    }
+  }, 1000);
+}
+
 
 function updateInputs(totalSeconds) {
   let minutes = Math.floor(totalSeconds / 60);
@@ -87,10 +109,28 @@ function resetTimer() {
   paused = false;
   document.getElementById('reset').style.display = 'none';
   document.getElementById('start').textContent = 'Start';
-  minutesInput.value = '40';
+  switch (document.querySelector('input[name="mode"]:checked').value) {
+    case 'focus':
+      minutesInput.value = '25';
+      break;
+    case 'shortbreak':
+      minutesInput.value = '05';
+      break;
+    case 'longbreak':
+      minutesInput.value = '15';
+      break;
+  }
   secondsInput.value = '00';
   minutesInput.readOnly = false;
   secondsInput.readOnly = false;
+}
+
+function toggleFocusMode() {
+  focusModeEnabled = !focusModeEnabled;
+  document.querySelector('.header').classList.toggle('hidden');
+  document.getElementById('modes').classList.toggle('hidden');
+  document.getElementById('buttongroup').classList.toggle('hidden');
+  document.querySelector('iframe').classList.toggle('hidden');
 }
 
 // bg image select logic
@@ -110,12 +150,46 @@ bgButtons.forEach(button => {
 document.getElementById('close-modal').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'none';
 });
-document.getElementById('select-bg').addEventListener('click', () => {
+document.getElementById('btnsettings').addEventListener('click', () => {
   document.getElementById('modal').style.display = 'block';
 });
 
+// playlist select logic
 document.getElementById('playlist').addEventListener('change', () => {
   const playlistId = document.getElementById('playlist').value;
   const iframe = document.querySelector('iframe');
   iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
 });
+
+// mode select logic
+document.querySelectorAll('input[name="mode"]').forEach((radio) => {
+  radio.addEventListener('change', () => {
+    const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+    if(selectedMode === 'focus'){
+      minutesInput.value = '25';
+      secondsInput.value = '00';
+    } else if(selectedMode === 'shortbreak'){
+      minutesInput.value = '05';
+      secondsInput.value = '00';
+    } else if(selectedMode === 'longbreak'){
+      minutesInput.value = '15';
+      secondsInput.value = '00';
+    }
+  });
+});
+
+// fullscreen logic
+document.getElementById('btnfullscreen').addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+document.addEventListener('mousemove', () => {
+  lastMouseMoveTime = Date.now();
+  if(focusModeEnabled){
+    toggleFocusMode();
+  }
+})

@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="aK01q-zYgS68aw87UqEg2GNSFs0AzOsaLKTcAw94M5U" />
   <link rel="stylesheet" href="style.css">
-  <link rel="prefetch" as="image" href="backgrounds/bg2.jpg">
+  <!-- <link rel="prefetch" as="image" href="backgrounds/bg2.jpg">
   <link rel="prefetch" as="image" href="backgrounds/bg3.jpg">
   <link rel="prefetch" as="image" href="backgrounds/bg5.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com"> -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <title>Aesthetic Pomodoro Timer</title>
 </head>
 <body>
@@ -29,28 +31,39 @@
 				<option value="5feq6jnXK0qJw5YrPJWkxY">Gaming</option>
 				<option value="37i9dQZF1DX5trt9i14X7j">Coding</option>
 			</select>
-			<div id="buttongroup">
-				<button id="close-modal">Close</button>
+			<div id="modal-buttongroup">
+				<button id="close-modal" class="btn">Close</button>
 			</div>
 		</div>
 	</div>
 	<div id="bgopacity">
 		<img id="bgimg" src="backgrounds/bg1.jpg">
 	</div>
-	<div id="main">
-		<div id="hint">
+	<div class="header fade">
+		<button id="btnfullscreen"><ion-icon name="scan-outline" title="Fullscreen"></ion-icon></button>
+		<button id="btnsettings"><ion-icon name="settings-outline" title="Settings"></ion-icon></button>
+	</div>
+	<div class="main">
+		<!-- <div id="hint">
 			<p>you can edit the timer. just click on it.</p>
+		</div> -->
+		<div id="modes" class="fade">
+			<input type="radio" id="focusmode" name="mode" value="focus" checked>
+			<label for="focusmode" class="btn">Focus Mode</label>
+			<input type="radio" id="shortbreak" name="mode" value="shortbreak">
+			<label for="shortbreak" class="btn">Short Break</label>
+			<input type="radio" id="longbreak" name="mode" value="longbreak">
+			<label for="longbreak" class="btn">Long Break</label>
 		</div>
-		<div>
+		<div id="timer">
 			<input type="number" id="minutes" min="0" max="99" value="25" maxlength="2"> <span id="dbldot">:</span>
 			<input type="number" id="seconds" min="0" max="59" value="00" maxlength="2">
 		</div>
-		<div>
-			<button id="start">Start</button>
-			<button id="reset" style="display: none;">Reset</button>
+		<div id="buttongroup" class="fade">
+			<button id="start" class="btn">Start</button>
+			<button id="reset" class="btn" style="display: none;">Reset</button>
 		</div>
-		<button id="select-bg">⚙️</button>
-		<iframe style="border-radius:12px; height: 80px;width: 360px;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+		<iframe class="fade" style="border-radius:12px; height: 80px;width: 360px;" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRwui0ExPn?theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 	</div>
 
   <script src="simple_timer.js"></script>

@@ -3,6 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	user-select: none;
+	transition: all 0.2s ease-in-out;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -12,12 +13,23 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.hidden{
-	display: none;
-}
-
 input,button,select{
 	font-family: inherit;
+}
+
+.fade {
+	transition: opacity 0.5s ease, transform 0.5s ease;
+	opacity: 1;
+  }
+  
+  .hidden.fade {
+	opacity: 0;
+	transform: scale(0.98);
+	pointer-events: none;
+  }
+
+.hidden{
+	visibility: hidden;
 }
 
 select{
@@ -50,6 +62,8 @@ body{
 	height: 100vh;
 	font-family: 'Funnel Display', sans-serif;
 	font-weight: 500;
+	max-height: 100vh;
+	overflow: hidden;
 }
 
 #bgimg{
@@ -72,13 +86,62 @@ body{
 	object-position: center;
 }
 
-#main{
+.header{
 	text-align: center;
+	position: fixed;
+	top: 1.5rem;
+	right: 2rem;
+	z-index: 0;
+}
+
+input[type="radio"]{
+	display: none;
+}
+
+input[type="radio"] + label{
+	cursor: pointer;
+	font-size: 15px;
+	background-color: transparent;
+	color: #fff;
+	width: 7.5rem;
+	margin-right: 0.5rem;
+	display: inline-block;
+	outline-color: #fff;
+}
+
+input[type="radio"]:hover + label{
+	background-color: #fff !important;
+	color: #000;
+}
+
+input[type="radio"]:checked + label{
+	background-color: #fff;
+	color: #000;
+}
+
+.header button{
+	font-size: 20px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	margin-left: 1rem;
+}
+
+.header button:hover{
+	opacity: 0.8;
+}
+
+.main{
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
 }
 
 input{
-	font-size: 100px;
-	width: 120px;
+	font-size: 6rem;
+	width: 8rem;
 	white-space: nowrap;
 	text-align: center;
 	background: transparent;
@@ -88,38 +151,30 @@ input{
 	font-weight: 500;
 }
 
-#main > div{
-	margin-top: 1rem;
-}
-
 #dbldot{
-	font-size: 64px;
+	font-size: 4rem;
 	letter-spacing: 0;
 	vertical-align: text-bottom;
 }
 
-button{
+.btn{
 	font-size: 17px;
 	border-radius: 2rem;
 	outline: 1px solid transparent;
 	border: none;
 	color: #000;
 	cursor: pointer;
-	padding: 10px 0;
+	padding: 10px;
 	-webkit-tap-highlight-color: transparent;
 	transition: all 0.2s ease-in-out;
 	background-color: #fff;
 	width: 100px;
 }
 
-button:hover{
+.btn:hover{
 	background-color: rgba(0, 0, 0, 0.4) !important;
 	color: #fff;
-	outline-color: #fff;
-}
-
-button:active{
-	background: rgba(0, 0, 0, 0.5);
+	outline-color: #fff !important;
 }
 
 iframe{
@@ -152,7 +207,7 @@ iframe{
 	gap: 1rem;
 }
 
-#modal-content #buttongroup{
+#modal-content #modal-buttongroup{
 	align-self: flex-end;
 }
 
@@ -180,19 +235,19 @@ iframe{
 	outline: 2px solid #fff;
 }
 
-#select-bg{
-	position: fixed;
-	bottom: 2.5rem;
-	right: 2rem;
-	background-color: transparent;
-	outline: 1px solid #fff;
-}
-
 #hint{
 	padding: 1rem;
 	background: rgba(0, 0, 0, 0.8);
 	border-radius: 1rem;
 	color: #fff;
+}
+
+.header button{
+	background-color: transparent;
+	outline: 1px solid #fff;
+	border: none;
+	color: #fff;
+	outline: none;
 }
 
 @media only screen and (max-width: 695px){
@@ -205,10 +260,7 @@ iframe{
 	button:hover{
 		background: transparent !important;
 	}
-	#select-bg{
-		bottom: 8rem;
-	}
 	#modal-content{
-		width: 100%;
+		width: 90%;
 	}
 }
