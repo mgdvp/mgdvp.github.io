@@ -165,6 +165,7 @@ document.getElementById('playlist').addEventListener('change', () => {
 document.querySelectorAll('input[name="mode"]').forEach((radio) => {
   radio.addEventListener('change', () => {
     const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+    resetTimer();
     if(selectedMode === 'focus'){
       minutesInput.value = '25';
       secondsInput.value = '00';
