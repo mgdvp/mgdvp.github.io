@@ -155,10 +155,12 @@ document.getElementById('btnsettings').addEventListener('click', () => {
 });
 
 // playlist select logic
-document.getElementById('playlist').addEventListener('change', () => {
-  const playlistId = document.getElementById('playlist').value;
-  const iframe = document.querySelector('iframe');
-  iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
+document.querySelectorAll('input[name="playlist"]').forEach((radio) => {
+  radio.addEventListener('change', () => {
+    const playlistId = document.querySelector('input[name="playlist"]:checked').value;
+    const iframe = document.querySelector('iframe');
+    iframe.src = `https://open.spotify.com/embed/playlist/${playlistId}?theme=0`;
+  });
 });
 
 // mode select logic

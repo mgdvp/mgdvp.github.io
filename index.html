@@ -29,11 +29,15 @@
 				<img src="backgrounds/bg6.jpg" alt="Background 6" id="bg6" class="selected">
 			</div>
 			<h2>Select playlist</h2>
-			<select id="playlist">
-				<option value="37i9dQZF1DWWQRwui0ExPn" selected>Relaxing</option>
-				<option value="5feq6jnXK0qJw5YrPJWkxY">Gaming</option>
-				<option value="37i9dQZF1DX5trt9i14X7j">Coding</option>
-			</select>
+			<div id="playlists">
+				<input type="radio" id="pl-relaxing" name="playlist" value="37i9dQZF1DWWQRwui0ExPn" checked>
+				<label for="pl-relaxing" class="btn">Relaxing</label>
+				<input type="radio" id="pl-gaming" name="playlist" value="5feq6jnXK0qJw5YrPJWkxY">
+				<label for="pl-gaming" class="btn">Gaming</label>
+				<input type="radio" id="pl-coding" name="playlist" value="37i9dQZF1DX5trt9i14X7j">
+				<label for="pl-coding" class="btn">Coding</label>
+			</div>
+			<span>by mgdvp. check on <a href="https://github.com/mgdvp/mgdvp.github.io" target="_blank">GitHub</a></span>
 			<div id="modal-buttongroup">
 				<button id="close-modal" class="btn">Close</button>
 			</div>
